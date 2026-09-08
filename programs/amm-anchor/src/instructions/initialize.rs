@@ -1,15 +1,15 @@
 use anchor_lang::prelude::*;
 use anchor_spl::{
     associated_token::AssociatedToken,
-    token::{Mint, Token, TokenAccount}
+    token::{Mint, Token, TokenAccount},
 };
 
 use crate::Config;
 
 #[derive(Accounts)]
 #[instruction(seed: u64)] // we will be getting the seed from input arg so we need to put here as instruction arg
-pub struct Initialize <'info> {
-    #[account(mut)] 
+pub struct Initialize<'info> {
+    #[account(mut)]
     pub admin: Signer<'info>,
 
     pub mint_x: Account<'info, Mint>,
@@ -55,9 +55,15 @@ pub struct Initialize <'info> {
     pub system_program: Program<'info, System>,
 }
 
-impl <'info> Initialize <'info> {
-    pub fn initialize(&mut self, seed: u64, fee: u16, authority: Option<Pubkey>, bumps: &InitializeBumps) -> Result<()> {
-        self.config.set_inner( Config {
+impl<'info> Initialize<'info> {
+    pub fn initialize(
+        &mut self,
+        seed: u64,
+        fee: u16,
+        authority: Option<Pubkey>,
+        bumps: &InitializeBumps,
+    ) -> Result<()> {
+        self.config.set_inner(Config {
             seed,
             authority,
             mint_x: self.mint_x.key(),
@@ -67,8 +73,7 @@ impl <'info> Initialize <'info> {
             config_bump: bumps.config,
             lp_bump: bumps.mint_lp,
         });
-        
-        
+
         Ok(())
     }
 }

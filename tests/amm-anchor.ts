@@ -7,6 +7,7 @@ import { ASSOCIATED_TOKEN_PROGRAM_ID as associatedTokenProgram, TOKEN_PROGRAM_ID
 import { randomBytes } from "crypto"
 import { assert } from "chai"
 import { ASSOCIATED_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/utils/token";
+import { simulateTransaction } from "@coral-xyz/anchor/dist/cjs/utils/rpc";
 
 
 const commitment: Commitment = "confirmed";

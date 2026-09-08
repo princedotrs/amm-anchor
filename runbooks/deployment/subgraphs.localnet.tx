@@ -1,0 +1,54 @@
+
+action "amm_anchor_deposit_event" "svm::deploy_subgraph" {
+    program_id = action.deploy_amm_anchor.program_id
+    program_idl = action.deploy_amm_anchor.program_idl
+    block_height = 0 // action.deploy_amm_anchor.block_height
+    event {
+        name = "DepositEvent"
+    }
+}
+
+action "amm_anchor_initialize_event" "svm::deploy_subgraph" {
+    program_id = action.deploy_amm_anchor.program_id
+    program_idl = action.deploy_amm_anchor.program_idl
+    block_height = 0 // action.deploy_amm_anchor.block_height
+    event {
+        name = "InitializeEvent"
+    }
+}
+
+action "amm_anchor_lock_event" "svm::deploy_subgraph" {
+    program_id = action.deploy_amm_anchor.program_id
+    program_idl = action.deploy_amm_anchor.program_idl
+    block_height = 0 // action.deploy_amm_anchor.block_height
+    event {
+        name = "LockEvent"
+    }
+}
+
+action "amm_anchor_swap_event" "svm::deploy_subgraph" {
+    program_id = action.deploy_amm_anchor.program_id
+    program_idl = action.deploy_amm_anchor.program_idl
+    block_height = 0 // action.deploy_amm_anchor.block_height
+    event {
+        name = "SwapEvent"
+    }
+}
+
+action "amm_anchor_unlock_event" "svm::deploy_subgraph" {
+    program_id = action.deploy_amm_anchor.program_id
+    program_idl = action.deploy_amm_anchor.program_idl
+    block_height = 0 // action.deploy_amm_anchor.block_height
+    event {
+        name = "UnlockEvent"
+    }
+}
+
+action "amm_anchor_withdraw_event" "svm::deploy_subgraph" {
+    program_id = action.deploy_amm_anchor.program_id
+    program_idl = action.deploy_amm_anchor.program_idl
+    block_height = 0 // action.deploy_amm_anchor.block_height
+    event {
+        name = "WithdrawEvent"
+    }
+}

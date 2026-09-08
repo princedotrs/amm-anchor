@@ -1,27 +1,32 @@
 pub mod constants;
 pub mod error;
+pub mod events;
 pub mod instructions;
 pub mod state;
-pub mod events;
 
 use anchor_lang::prelude::*;
 
 pub use constants::*;
+pub use events::*;
 pub use instructions::*;
 pub use state::*;
-pub use events::*;
 
-declare_id!("BtGwPztGMJhEdwQPfZUsqtaUiUvgx8aQovoZybK9cKbE");
+declare_id!("BLJGWLyfdTfYDv4BDgKmTdHgNMpixnQ2kjjGwuPyWqrP");
 
 #[program]
 pub mod amm_anchor {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>, seed: u64, fee: u16, authority: Option<Pubkey>) -> Result<()> {
+    pub fn initialize(
+        ctx: Context<Initialize>,
+        seed: u64,
+        fee: u16,
+        authority: Option<Pubkey>,
+    ) -> Result<()> {
         ctx.accounts.initialize(seed, fee, authority, &ctx.bumps)?;
 
         emit!(InitializeEvent {
-            admin : ctx.accounts.admin.key(),
+            admin: ctx.accounts.admin.key(),
             mint_x: ctx.accounts.mint_x.key(),
             mint_y: ctx.accounts.mint_y.key(),
             mint_lp: ctx.accounts.mint_lp.key(),
@@ -38,7 +43,7 @@ pub mod amm_anchor {
         ctx.accounts.deposit(amount, max_x, max_y)?;
 
         emit!(DepositEvent {
-            user : ctx.accounts.user.key(),
+            user: ctx.accounts.user.key(),
             mint_x: ctx.accounts.mint_x.key(),
             mint_y: ctx.accounts.mint_y.key(),
             mint_lp: ctx.accounts.mint_lp.key(),
@@ -55,10 +60,10 @@ pub mod amm_anchor {
     }
 
     pub fn swap(ctx: Context<Swap>, is_x: bool, amount: u64, min: u64) -> Result<()> {
-        ctx.accounts.swap(is_x,amount,min)?;
+        ctx.accounts.swap(is_x, amount, min)?;
 
         emit!(SwapEvent {
-            user : ctx.accounts.user.key(),
+            user: ctx.accounts.user.key(),
             mint_x: ctx.accounts.mint_x.key(),
             mint_y: ctx.accounts.mint_y.key(),
             mint_lp: ctx.accounts.mint_lp.key(),
@@ -76,7 +81,7 @@ pub mod amm_anchor {
         ctx.accounts.withdraw(amount, min_x, min_y)?;
 
         emit!(WithdrawEvent {
-            user : ctx.accounts.user.key(),
+            user: ctx.accounts.user.key(),
             mint_x: ctx.accounts.mint_x.key(),
             mint_y: ctx.accounts.mint_y.key(),
             mint_lp: ctx.accounts.mint_lp.key(),
@@ -90,7 +95,6 @@ pub mod amm_anchor {
         });
 
         Ok(())
-
     }
 
     pub fn lock(ctx: Context<Update>) -> Result<()> {
