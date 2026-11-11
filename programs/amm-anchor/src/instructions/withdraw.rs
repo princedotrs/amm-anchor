@@ -91,12 +91,12 @@ impl<'info> Withdraw<'info> {
         .map_err(AmmError::from)?;
 
         require!(
-            amounts.x <= min_x && amounts.y <= min_y,
+            amounts.x >= min_x && amounts.y >= min_y,
             AmmError::SlippageExceded
         );
 
-        self.withdraw_tokens(true, amount)?;
-        self.withdraw_tokens(false, amount)?;
+        self.withdraw_tokens(true, amounts.x)?;
+        self.withdraw_tokens(false, amounts.y)?;
 
         self.burn_lp_tokens(amount)?;
 
