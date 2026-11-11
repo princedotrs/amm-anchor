@@ -1,7 +1,5 @@
 # amm-anchor: a constant-product AMM on Solana, built with Anchor
 
-[![CI](https://github.com/princedotrs/amm-anchor/actions/workflows/ci.yml/badge.svg)](https://github.com/princedotrs/amm-anchor/actions/workflows/ci.yml)
-
 A minimal Uniswap-v2-style automated market maker for two SPL tokens, written in Rust with Anchor. It's part of my **Solana from first principles** course: the code here is what we build on camera, line by line.
 
 > **Watch the lessons:** [Part 1: How AMMs work](https://youtu.be/FwcrPbUakj8) · [Part 2: AMM math](https://youtu.be/8Bt0a7KWz0o) · [Part 3: Designing a DEX](https://youtu.be/cqGn0EempdE) · [Part 4: Building the full contract](https://youtu.be/rmpYBILLJuU)
