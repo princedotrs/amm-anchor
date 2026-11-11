@@ -324,9 +324,9 @@ describe("amm-anchor", () => {
 
     // Add your test here.
     const tx = await program.methods.withdraw(
-      new BN(20), 
-      new BN(20),
-      new BN(30),
+      new BN(20), // LP tokens to burn
+      new BN(0),  // min X to receive
+      new BN(0),  // min Y to receive
     )
     .accountsStrict({
       user: user.publicKey,
